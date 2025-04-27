@@ -2,8 +2,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { UserProvider, useUser } from './contexts/UserContext';
 import { SignUpModal } from './components/SignUpModal';
 import { Feed } from './components/Feed';
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function AppContent() {
