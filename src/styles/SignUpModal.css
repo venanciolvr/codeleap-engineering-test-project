@@ -95,17 +95,63 @@ button:disabled {
 @media (max-width: 480px) {
   .modal-content {
     padding: 20px;
+    margin: 12px;
+    width: calc(100% - 24px);
+  }
+
+  .modal-content h1 {
+    font-size: 18px;
+    margin-bottom: 20px;
   }
 
   .input-group {
     margin-bottom: 20px;
   }
 
+  .input-group label {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
   .input-group input {
-    padding: 10px 14px;
+    padding: 10px 12px;
+    font-size: 14px;
   }
 
   button {
     padding: 10px 14px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .modal-content {
+    padding: 16px;
+    margin: 8px;
+    width: calc(100% - 16px);
+  }
+
+  .modal-content h1 {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  .input-group {
+    margin-bottom: 16px;
+  }
+
+  .input-group label {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  .input-group input {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  button {
+    padding: 8px 12px;
+    font-size: 13px;
   }
 } 

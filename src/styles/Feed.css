@@ -34,17 +34,17 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .feed-header {
-  width: 100%;
+  width: var(--feed-width);
   background-color: var(--main-blue);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .feed-header-content {
-  width: var(--feed-width);
-  margin: 0 auto;
+  width: 100%;
   padding: 24px var(--min-page-padding);
   box-sizing: border-box;
   display: flex;
@@ -576,6 +576,21 @@ textarea::placeholder {
   :root {
     --content-padding: 20px;
     --min-page-padding: 16px;
+    --feed-width: 100%;
+  }
+
+  .feed-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .feed-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
   }
 
   .feed-header-content,
@@ -583,52 +598,84 @@ textarea::placeholder {
     width: 100%;
     max-width: var(--feed-width);
     min-width: 320px;
-    padding-left: var(--min-page-padding);
-    padding-right: var(--min-page-padding);
+    padding: 16px var(--min-page-padding);
+    box-sizing: border-box;
   }
 
-  .feed-content {
-    padding-top: 24px;
-    padding-bottom: 24px;
-    border-radius: 0;
-    box-shadow: none;
+  .feed-content-inner {
+    gap: 24px;
+  }
+
+  .post-form {
+    padding: 16px;
+    border-radius: 8px;
   }
 
   .post-header {
-    padding: 16px var(--content-padding);
+    padding: 12px 16px;
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 8px;
   }
 
   .post-header h3 {
     margin-right: 0;
     width: 100%;
+    font-size: 16px;
   }
 
   .post-actions {
     width: 100%;
     justify-content: space-between;
+    gap: 12px;
+  }
+
+  .post-buttons {
+    gap: 8px;
+  }
+
+  .action-button {
+    padding: 6px;
+  }
+
+  .action-button svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .post-content {
+    padding: 16px;
+  }
+
+  .post-content p {
+    font-size: 14px;
   }
 
   .post-footer {
     flex-direction: column;
     align-items: flex-start;
+    gap: 8px;
+    margin-top: 16px;
   }
 
-  .like-button {
+  .like-button, .comment-toggle-btn {
     width: 100%;
     justify-content: center;
+    padding: 8px 12px;
+    font-size: 13px;
   }
 
   .modal-content {
     margin: 16px;
     width: calc(100% - 32px);
     max-width: 100%;
+    padding: 16px;
   }
 
   .modal-actions {
     flex-direction: column;
+    gap: 8px;
+    margin-top: 24px;
   }
 
   .modal-actions button {
@@ -639,24 +686,246 @@ textarea::placeholder {
     width: 100%;
     max-width: var(--feed-width);
     min-width: 320px;
-    padding: 14px 14px;
+    padding: 12px var(--min-page-padding);
     gap: 12px;
+    margin-bottom: 16px;
   }
+
   .profile-avatar {
-    width: 38px;
-    height: 38px;
-    font-size: 18px;
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
   }
+
   .profile-info {
     gap: 0;
   }
+
+  .profile-label {
+    font-size: 12px;
+  }
+
+  .profile-username {
+    font-size: 14px;
+  }
+
   .logout-button {
     padding: 4px;
     font-size: 10px;
   }
+
   .logout-button svg {
     width: 14px;
     height: 14px;
+  }
+
+  .comments-section {
+    padding: 12px;
+    margin-top: 16px;
+  }
+
+  .comment-item {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .comment-username {
+    font-size: 13px;
+  }
+
+  .comment-menu-btn {
+    padding: 3px 4px;
+  }
+
+  .comment-menu-dropdown {
+    min-width: 100px;
+  }
+
+  .comment-menu-item {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+
+  .add-comment-form {
+    gap: 4px;
+  }
+
+  .add-comment-input {
+    padding: 10px 12px;
+    font-size: 14px;
+    min-height: 48px;
+  }
+
+  .add-comment-btn {
+    width: 80px;
+    height: 28px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --content-padding: 16px;
+    --min-page-padding: 12px;
+  }
+
+  .feed-header-content {
+    padding: 12px var(--min-page-padding);
+  }
+
+  .feed-header h1 {
+    font-size: 18px;
+  }
+
+  .feed-content {
+    padding: 12px var(--min-page-padding);
+  }
+
+  .post-form {
+    padding: 12px;
+  }
+
+  .post-form h2 {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+  }
+
+  .form-group label {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .submit-button {
+    min-width: 90px;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .post-date {
+    font-size: 11px;
+  }
+
+  .comments-header {
+    font-size: 12px;
+  }
+
+  .comment-edit-input {
+    padding: 8px 12px;
+    font-size: 13px;
+    min-height: 60px;
+  }
+
+  .comment-save-btn, .comment-cancel-btn {
+    min-width: 70px;
+    height: 28px;
+    font-size: 12px;
+  }
+
+  .modal-content {
+    margin: 12px;
+    padding: 12px;
+  }
+
+  .modal-content h2 {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  .modal-actions {
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  :root {
+    --content-padding: 12px;
+    --min-page-padding: 8px;
+  }
+
+  .feed-header-content {
+    padding: 10px var(--min-page-padding);
+  }
+
+  .feed-header h1 {
+    font-size: 16px;
+  }
+
+  .feed-content {
+    padding: 10px var(--min-page-padding);
+  }
+
+  .post-form {
+    padding: 10px;
+  }
+
+  .post-form h2 {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .form-group {
+    margin-bottom: 10px;
+  }
+
+  .form-group label {
+    font-size: 11px;
+    margin-bottom: 3px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .submit-button {
+    min-width: 80px;
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .post-date {
+    font-size: 10px;
+  }
+
+  .comments-header {
+    font-size: 11px;
+  }
+
+  .comment-edit-input {
+    padding: 6px 10px;
+    font-size: 12px;
+    min-height: 50px;
+  }
+
+  .comment-save-btn, .comment-cancel-btn {
+    min-width: 60px;
+    height: 24px;
+    font-size: 11px;
+  }
+
+  .modal-content {
+    margin: 8px;
+    padding: 10px;
+  }
+
+  .modal-content h2 {
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+
+  .modal-actions {
+    margin-top: 12px;
   }
 }
 
