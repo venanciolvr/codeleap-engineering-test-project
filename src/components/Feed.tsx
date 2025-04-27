@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { useUser } from '../contexts/UserContext';
 import { Toast } from './Toast';
-import { FiEdit2, FiTrash2, FiHeart, FiMoreHorizontal, FiMessageCircle } from 'react-icons/fi';
+import { FiEdit2, FiTrash2, FiHeart, FiMoreHorizontal, FiMessageCircle, FiLogOut } from 'react-icons/fi';
 import axios from 'axios';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import '../styles/Feed.css';
+import { useNavigate } from 'react-router-dom';
 
 const API_BASE_URL = 'https://dev.codeleap.co.uk/careers/';
 const LIKES_STORAGE_KEY = 'codeleap_likes';
@@ -39,7 +40,8 @@ interface Comment {
 }
 
 export function Feed() {
-  const { username } = useUser();
+  const { username, logout } = useUser();
+  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [posts, setPosts] = useState<Post[]>([]);
@@ -311,6 +313,11 @@ export function Feed() {
     });
   };
 
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
+
   return (
     <div className="feed-container">
       <header className="feed-header">
@@ -324,6 +331,10 @@ export function Feed() {
           <span className="profile-label">Logged in as:</span>
           <span className="profile-username">{username}</span>
         </div>
+        <button onClick={handleLogout} className="logout-button" title="Logout">
+          <FiLogOut size={18} />
+          <span>Logout</span>
+        </button>
       </div>
       <main className="feed-content">
         <div className="feed-content-inner">

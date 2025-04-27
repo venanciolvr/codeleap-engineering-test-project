@@ -47,6 +47,9 @@ body {
   margin: 0 auto;
   padding: 24px var(--min-page-padding);
   box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .feed-header h1 {
@@ -55,6 +58,41 @@ body {
   font-weight: 600;
   color: white;
   letter-spacing: -0.01em;
+}
+
+.logout-button {
+  background-color: transparent;
+  color: var(--text-gray);
+  padding: 6px;
+  border-radius: var(--button-radius);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid var(--border-color);
+  width: fit-content;
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 11px;
+  line-height: 1;
+}
+
+.logout-button:hover {
+  background-color: var(--background-gray);
+  color: var(--main-blue);
+  border-color: var(--main-blue);
+}
+
+.logout-button svg {
+  transition: transform 0.2s ease;
+  width: 16px;
+  height: 16px;
+}
+
+.logout-button:hover svg {
+  transform: translateX(2px);
 }
 
 .feed-content {
@@ -596,6 +634,30 @@ textarea::placeholder {
   .modal-actions button {
     width: 100%;
   }
+
+  .profile-area {
+    width: 100%;
+    max-width: var(--feed-width);
+    min-width: 320px;
+    padding: 14px 14px;
+    gap: 12px;
+  }
+  .profile-avatar {
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+  }
+  .profile-info {
+    gap: 0;
+  }
+  .logout-button {
+    padding: 4px;
+    font-size: 10px;
+  }
+  .logout-button svg {
+    width: 14px;
+    height: 14px;
+  }
 }
 
 .comments-section {
@@ -764,6 +826,7 @@ textarea::placeholder {
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   padding: 18px 28px;
   box-sizing: border-box;
+  position: relative;
 }
 
 .profile-avatar {
@@ -784,6 +847,7 @@ textarea::placeholder {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  flex: 1;
 }
 
 .profile-label {
@@ -799,24 +863,6 @@ textarea::placeholder {
   color: #222;
   letter-spacing: -0.01em;
   text-align: left;
-}
-
-@media (max-width: 840px) {
-  .profile-area {
-    width: 100%;
-    max-width: var(--feed-width);
-    min-width: 320px;
-    padding: 14px 14px;
-    gap: 12px;
-  }
-  .profile-avatar {
-    width: 38px;
-    height: 38px;
-    font-size: 18px;
-  }
-  .profile-info {
-    gap: 0;
-  }
 }
 
 .comment-menu {
