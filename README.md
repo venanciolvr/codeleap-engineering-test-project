@@ -5,7 +5,7 @@ The goal was to build a simple application with basic CRUD operations, integrate
 
 ## 📸 Preview
 
-> [Insert link to deployed app here]
+[Simple CRUD Front-end](https://codeleap-frontend-challenge-eight.vercel.app/)
 
 ## 🚀 Features
 
@@ -24,7 +24,7 @@ The goal was to build a simple application with basic CRUD operations, integrate
 - Axios
 - CSS Modules / TailwindCSS (adapt if necessary)
 - LocalStorage
-- API Integration (`https://dev.codeleap.co.uk/careers/`)
+- API Integration
 
 ## 🧩 How to Run Locally
 
