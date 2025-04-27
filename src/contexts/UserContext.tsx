@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
 interface UserContextType {
   username: string;
@@ -8,11 +8,25 @@ interface UserContextType {
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
+const USER_STORAGE_KEY = 'codeleap_username';
+
 export function UserProvider({ children }: { children: ReactNode }) {
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState(() => {
+    const storedUsername = localStorage.getItem(USER_STORAGE_KEY);
+    return storedUsername || '';
+  });
+
+  useEffect(() => {
+    if (username) {
+      localStorage.setItem(USER_STORAGE_KEY, username);
+    } else {
+      localStorage.removeItem(USER_STORAGE_KEY);
+    }
+  }, [username]);
 
   const logout = () => {
     setUsername('');
+    localStorage.removeItem(USER_STORAGE_KEY);
   };
 
   return (
